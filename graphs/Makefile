@@ -20,14 +20,15 @@ CAIROLIB=`pkg-config --cflags --libs cairo`
 LD=gcc
 LDFLAGS=$(PTHREAD) $(CAIROLIB)
 
-OBJS=main.o
+OBJS=example.o
 
 all: $(OBJS)
 	$(LD) -o $(TARGET) $(OBJS) $(LDFLAGS)
 
-main.o: example.c
-	$(CC) -c $(CCFLAGS) example.c $(CAIROLIB) -o main.o
+example.o: example.c
+	$(CC) -c $(CCFLAGS) example.c $(CAIROLIB) -o example.o
 
 clean:
 	rm -f *.o $(TARGET)
 	rm -f *.png $(TARGET)
+	rm -f *.h.gch $(TARGET)
